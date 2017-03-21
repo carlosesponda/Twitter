@@ -5,12 +5,12 @@ public class Chatter
 {
    public static void main(String[] args) throws Exception
    {
-        Twitter.GetOAuthToken();
+        Tweet.GetOAuthToken();
         
         // The server to connect to and our details.
         String server = "irc.freenode.net";
-        String nick = "simple_bot69";
-        String login = "simple_bot69";
+        String nick = "Cflash141";
+        String login = "Cflash141";
 
         // The channel which the bot will join.
         String channel = "#irchacks";
@@ -67,8 +67,8 @@ public class Chatter
 	                	  //if zip code is found then display the weather information
 		                  if(words[i].length() == 5 && tryParseInt(words[i]))
 		                  {
-		                	  int currentTemp = Weather.getWeather(words[i]);
-		                      TempHL highLow = Weather.getForecast(words[i]);
+		                	  int currentTemp = Temperature.getWeather(words[i]);
+		                      Structure highLow = Temperature.getForecast(words[i]);
 		                         
 		                      writer.write("PRIVMSG " + channel + " :The weather is " + currentTemp + " with a high of " + highLow.tempHigh + " and a low of " + highLow.tempLow + "\r\n");
 		                      writer.flush();
@@ -86,7 +86,7 @@ public class Chatter
                 	{
                 		if(tryParseInt(words[i]))
                 		{
-                			String trendingTags = Twitter.GetTrendingTagsStr(words[i]);
+                			String trendingTags = Tweet.GetTrendingTagsStr(words[i]);
                         
                 			writer.write("PRIVMSG " + channel + " :" + trendingTags + "\r\n");
                 			writer.flush();

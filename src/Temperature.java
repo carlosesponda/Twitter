@@ -47,7 +47,7 @@ public class Temperature
         try
         {
 
-            URL urlID = new URL("http://api.wunderground.com/api/6cc37be71cf1eca2/forecast/q/" + zipcode + ".json");
+            URL urlID = new URL("http://api.wunderground.com/api/3466a88f38b75816/forecast/q/" + zipcode + ".json");
             URLConnection connection = urlID.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             

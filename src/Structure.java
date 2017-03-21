@@ -5,7 +5,7 @@ public class Structure
 	int tempHigh;
 	int tempLow;
 	
-	public TempHL(int high, int low)
+	public Structure(int high, int low)
 	{
 		this.tempHigh = high;
 		this.tempLow = low;
