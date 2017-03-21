@@ -9,6 +9,7 @@ public class Chatter
         
         // The server to connect to and our details.
         String server = "irc.freenode.net";
+        //useds the username and the lgoin with the same code
         String nick = "Cflash141";
         String login = "Cflash141";
 
@@ -17,8 +18,10 @@ public class Chatter
         
         // Connect directly to the IRC server.
         Socket socket = new Socket(server, 6667);
+        //creates the writer to respond
         BufferedWriter writer = new BufferedWriter(
                 new OutputStreamWriter(socket.getOutputStream( )));
+        //creates the stream in order to have input
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(socket.getInputStream( )));
         

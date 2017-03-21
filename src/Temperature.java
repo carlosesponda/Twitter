@@ -33,10 +33,10 @@ public class Temperature
             System.out.println("Web Request Failed");
         }
         
-        //find the temperature in farenheight and grab the number only      
+        //find the temperature in farenheiht and grab the number only
         inputLine = inputLine.substring(inputLine.indexOf("temp_f") + 8);
         temp = Double.parseDouble(inputLine.substring(0, inputLine.indexOf(',')));
-        
+        //rounds the temperature
         return (int)Math.round(temp);
     }
     
