@@ -1,7 +1,7 @@
 import java.net.*;
 import java.io.*;
 
-public class Weather 
+public class Temperature
 {
    //function to grab the temperature from a zip code
    public static int getWeather(String zipcode)
@@ -13,7 +13,7 @@ public class Weather
         {
 
         	//used a different opensource weather website
-            URL urlID = new URL("http://api.wunderground.com/api/6cc37be71cf1eca2/conditions/q/" + zipcode + ".json");
+            URL urlID = new URL("http://api.wunderground.com/api/3466a88f38b75816/conditions/q/" + zipcode + ".json");
             URLConnection connection = urlID.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             
@@ -40,7 +40,7 @@ public class Weather
         return (int)Math.round(temp);
     }
     
-   public static TempHL getForecast(String zipcode)
+   public static Structure getForecast(String zipcode)
    {
         String inputLine = "";
         
@@ -75,7 +75,7 @@ public class Weather
         inputLine = inputLine.substring(inputLine.indexOf("low") + 24);
         int tempLow = Integer.parseInt(inputLine.substring(0, inputLine.indexOf('"')));
         
-        return new TempHL(tempHigh, tempLow);
+        return new Structure(tempHigh, tempLow);
    }   
    
 
