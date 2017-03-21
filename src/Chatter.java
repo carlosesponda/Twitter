@@ -5,13 +5,14 @@ public class Chatter
 {
    public static void main(String[] args) throws Exception
    {
+        //get authenticator
         Tweet.GetOAuthToken();
         
         // The server to connect to and our details.
         String server = "irc.freenode.net";
-        //useds the username and the lgoin with the same code
-        String nick = "Cflash141";
-        String login = "Cflash141";
+        //use the username and the lgoin with the same code
+        String nick = "MyChatBot";
+        String login = "MyChatBot";
 
         // The channel which the bot will join.
         String channel = "#irchacks";
@@ -31,13 +32,13 @@ public class Chatter
         writer.flush( );
         
         // Read lines from the server until it tells us we have connected.
-        String line = null;
-        while ((line = reader.readLine( )) != null) {
-            if (line.indexOf("004") >= 0) {
+        String line;
+       while ((line = reader.readLine( )) != null) {
+            if (line.contains("004")) {
                 // We are now logged in.
                 break;
             }
-            else if (line.indexOf("433") >= 0) {
+            else if (line.contains("433")) {
                 System.out.println("Nickname is already in use.");
                 return;
             }
@@ -60,7 +61,7 @@ public class Chatter
                 System.out.println(line);
                 
                 //if the keyword weather is found, check additional following cases
-                if(line.indexOf("weather") != -1)
+                if(line.contains("weather"))
                 {
 	                 // Look for zip codes of length 5 and try to parse as int
 	                 
@@ -71,8 +72,9 @@ public class Chatter
 		                  if(words[i].length() == 5 && tryParseInt(words[i]))
 		                  {
 		                	  int currentTemp = Temperature.getWeather(words[i]);
+		                	  //
 		                      Structure highLow = Temperature.getForecast(words[i]);
-		                         
+		                      //output for the weather
 		                      writer.write("PRIVMSG " + channel + " :The weather is " + currentTemp + " with a high of " + highLow.tempHigh + " and a low of " + highLow.tempLow + "\r\n");
 		                      writer.flush();
 		                  }
@@ -81,7 +83,7 @@ public class Chatter
                 }
                 
                 //dallas woeid is 2388929
-                else if(line.indexOf("trending") != -1)
+                else if(line.contains("trending"))
                 {
                 	// Look for strings that can be parsed as a number
                 	String[] words = line.split(" ");
@@ -101,7 +103,7 @@ public class Chatter
    }
    
    //find the zip code from the line entered
-   public static boolean tryParseInt(String value) 
+   private static boolean tryParseInt(String value)
    {  
         try 
         {  
@@ -109,7 +111,7 @@ public class Chatter
             return true;  
         } 
         catch (NumberFormatException e) 
-        {  
+        {
          return false;  
         }  
    }

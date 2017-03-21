@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Tweet 
 {
-	public static String bearerToken = "";
+	private static String bearerToken = "";
 	
 	public static void GetOAuthToken()
 	{
@@ -16,7 +16,7 @@ public class Tweet
 		try
 		{
 			//encode the credentials
-			String creds = "YXY6JwOH58yavK26sYXFppJHK:TGAtsIEewxDx3kP9vHAaGstzRxJePJfoho4AAjePnkAThCwbu6";
+			String creds = "6tf4ukmX7Azax5MwAFAYf0H7s:77HkGzHOcI0I5RNbl7KXPk0C5gnv2qKhRYhv7E4jDi5EoSYMPQ";
 			creds = Base64.getEncoder().encodeToString(creds.getBytes());
 			
 			//set up web request
@@ -57,7 +57,7 @@ public class Tweet
 		bearerToken = inputStr.substring(0, inputStr.indexOf('"'));
 	}
 	
-	public static List<String> GetTrendingTags(String woeid)
+	private static List<String> GetTrendingTags(String woeid)
     {
         String inputStr = "";
        
