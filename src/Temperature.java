@@ -1,10 +1,10 @@
 import java.net.*;
 import java.io.*;
 
-public class Temperature
+class Temperature
 {
    //function to grab the temperature from a zip code
-   public static int getWeather(String zipcode)
+   static int getWeather(String zipcode)
    {
         double temp;
         String inputLine = "";
@@ -33,14 +33,14 @@ public class Temperature
             System.out.println("Web Request Failed");
         }
         
-        //find the temperature in farenheiht and grab the number only
+        //find the temperature in fahrenheit and grab the number only
         inputLine = inputLine.substring(inputLine.indexOf("temp_f") + 8);
         temp = Double.parseDouble(inputLine.substring(0, inputLine.indexOf(',')));
         //rounds the temperature
         return (int)Math.round(temp);
     }
     
-   public static Structure getForecast(String zipcode)
+   static Structure getForecast(String zipcode)
    {
         String inputLine = "";
         
